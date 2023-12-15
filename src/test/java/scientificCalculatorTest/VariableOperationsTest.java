@@ -22,39 +22,35 @@ public class VariableOperationsTest {
     
     public VariableOperationsTest() {
     }
-
-    /**
-     * Test of assignToVar method, of class VariableOperations.
-     */
-    
     
     @BeforeEach
     public void setUp(){
         stack = new LinkedList<>();
         varStack = new VariableOperations(stack);
     }
+
+    /**
+     * Test of assignToVar method, with two numbers in the stack.
+     */
     
     @Test
     public void testAssignToVar1() {
         System.out.println("Testing AssignToVar method");
-        ComplexNumber c1 = new ComplexNumber(3, 3);
-        ComplexNumber c2 = new ComplexNumber(3, 5);
+        ComplexNumber c1 = new ComplexNumber(3.6, 83);
+        ComplexNumber c2 = new ComplexNumber(317, 99.66);
         stack.addFirst(c1);
         stack.addFirst(c2);
         int s1 = stack.size();
         varStack.assignToVar('x');
-
-        // Checking stack size and if c2 has effectively been removed from stack 
         assertEquals(s1 - 1, stack.size());
         assertEquals(c1, stack.peekFirst());
-
-        // Checking if c2 has effectively been assigned to varStack
         varStack.copyFromVar('x');
         assertEquals(c2, stack.peekFirst());
     }
     
     
-    /* Testing assignToVar method, in a case that all the numbers in the stack 
+    /**
+    * Testing assignToVar method, in a case that all the numbers in the stack 
     * will be saved in a variable, and then go back in the stack. 
     */
     @Test
@@ -85,19 +81,14 @@ public class VariableOperationsTest {
         for (int i = 0; i < 26; i++) {
             stack.addFirst(new ComplexNumber(3,6));
         }
-
         for (char car = 'a'; car <= 'z'; car++) {
             varStack.assignToVar(car);
         }
-
         assertEquals(0, stack.size());
-
         for (char car = 'a'; car <= 'z'; car++) {
             varStack.copyFromVar(car);
         }
-
         assertEquals(26, stack.size());
-
         for (int i = 0; i < 26; i++) {
             assertEquals(new ComplexNumber(3,6), stack.removeFirst());
         }

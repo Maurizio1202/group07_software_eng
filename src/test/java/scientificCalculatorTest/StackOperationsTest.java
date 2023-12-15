@@ -7,8 +7,7 @@ import java.util.LinkedList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
-import scientificCalculator.ComplexNumber;
-import scientificCalculator.StackOperations;
+import scientificCalculator.*;
 
 /**
  *
@@ -22,16 +21,15 @@ public class StackOperationsTest {
     public StackOperationsTest() {
     }
 
-    /**
-     * Test of clear method, of class StackOperations.
-     */
-    
     @BeforeEach
     public void setUp() {
         stack = new LinkedList<>();
         s = new StackOperations(stack);
     }
     
+    /**
+     * Test of clear method, without anything in the stack.
+     */
     
     @Test
     public void testClear1() {
@@ -40,6 +38,9 @@ public class StackOperationsTest {
         assertEquals(true, stack.isEmpty());
     }
     
+    /**
+     * Test of clear method, with something in the stack.
+     */
     @Test
     public void testClear2() {
         System.out.println("Testing Clear method");
@@ -54,7 +55,7 @@ public class StackOperationsTest {
     }
 
     /**
-     * Test of drop method, of class StackOperations.
+     * Test of drop method, with two numbers in the stack.
      */
     @Test
     public void testDrop() {
@@ -67,13 +68,13 @@ public class StackOperationsTest {
         s.drop();
         assertEquals(s1 - 1, stack.size());
         assertEquals(c1, stack.peekFirst());
-
-        // Checking the drop removing also the last element into the stack
         s.drop();
         assertEquals(0, stack.size());
         assertEquals(null, stack.peekFirst());
     }
-    
+    /**
+     * Test of clear method, fail in case the stack is empty.
+     */
     @Test
     public void testDropFail() {
         System.out.println("Testing Drop method in case of Exception");
@@ -84,25 +85,45 @@ public class StackOperationsTest {
     }
 
     /**
-     * Test of dup method, of class StackOperations.
+     * Test of dup method, with one number in the stack.
      */
     @Test
-    public void testDup() {
+    public void testDup1() {
         System.out.println("Testing Dup method");
-        ComplexNumber c = new ComplexNumber(54, 77);
-        stack.addFirst(c);
+        ComplexNumber c1 = new ComplexNumber(54, 77);
+        stack.addFirst(c1);
         int s1 = stack.size();
         s.dup();
         assertEquals(s1 + 1, stack.size());
-        assertEquals(c, stack.peekFirst());
-
-        // Additional check: verify if the last element is actually the copy of the second-last one
-        ComplexNumber out1 = stack.removeFirst();
-        ComplexNumber out2 = stack.removeFirst();
-        assertEquals(out1, out2);
+        assertEquals(c1, stack.peekFirst());
+        ComplexNumber copy1 = stack.removeFirst();
+        ComplexNumber copy2 = stack.removeFirst();
+        assertEquals(copy1, copy2);
     }
     
+    /**
+     * Test of dup method, with two number in the stack.
+     */
+    @Test
+    public void testDup2() {
+        System.out.println("Testing Dup method");
+        ComplexNumber c1 = new ComplexNumber(54, 77);
+        ComplexNumber c2 = new ComplexNumber(55, 78);
+        stack.addFirst(c1);
+        stack.addFirst(c2);
+        int s1 = stack.size();
+        s.dup();
+        assertEquals(s1 + 1, stack.size());
+        assertEquals(c2, stack.peekFirst());
+        ComplexNumber copy1 = stack.removeFirst();
+        ComplexNumber copy2 = stack.removeFirst();
+        assertEquals(copy1, copy2);
+        assertEquals(c1, stack.removeFirst());
+    }
     
+    /**
+     * Test of dup method, fail in case the stack is empty.
+     */
     @Test
     public void testDupFail(){
         System.out.println("Testing Dup method in case of Exception");
@@ -113,13 +134,13 @@ public class StackOperationsTest {
     }
 
     /**
-     * Test of swap method, of class StackOperations.
+     * Test of swap method, .
      */
     @Test
     public void testSwap() {
         System.out.println("Testing Swap method");
-        ComplexNumber c1 = new ComplexNumber(3, 3);
-        ComplexNumber c2 = new ComplexNumber(5, 5);
+        ComplexNumber c1 = new ComplexNumber(7, 8.5);
+        ComplexNumber c2 = new ComplexNumber(4.2, 103.4);
         stack.addFirst(c1);
         stack.addFirst(c2);
         int s1 = stack.size();
@@ -154,30 +175,26 @@ public class StackOperationsTest {
     
     
     /**
-     * Test of over method, of class StackOperations.
+     * Test of over method, .
      */
     @Test
     public void testOver() {
         System.out.println("Testing Over method");
-        ComplexNumber c1 = new ComplexNumber(3, 3);
-        ComplexNumber c2 = new ComplexNumber(5, 5);
+        ComplexNumber c1 = new ComplexNumber(88.6, 34.6);
+        ComplexNumber c2 = new ComplexNumber(50.6, 81.6);
         stack.addFirst(c1);
         stack.addFirst(c2);
         int s1 = stack.size();
         s.over();
         assertEquals(s1 + 1, stack.size());
         assertEquals(c1, stack.peekFirst());
-
-        // Additional check: verify if the last element is actually the copy of the third-last one
-        ComplexNumber out1 = stack.removeFirst();
-        ComplexNumber out2 = stack.removeFirst();
-        ComplexNumber out3 = stack.removeFirst();
-        assertEquals(out1, out3);
-
-        // Additional check: verify the general order of the elements
-        assertEquals(c1, out1);
-        assertEquals(c2, out2);
-        assertEquals(c1, out3);
+        ComplexNumber d1 = stack.removeFirst();
+        ComplexNumber d2 = stack.removeFirst();
+        ComplexNumber d3 = stack.removeFirst();
+        assertEquals(d1, d3);
+        assertEquals(c1, d1);
+        assertEquals(c2, d2);
+        assertEquals(c1, d3);
     }
     
     //Test with zero element in the stack
