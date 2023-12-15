@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scientificCalculator.CalculatorControllerFX">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1092.0" style="-fx-background-color: #444444;" />
+      <AnchorPane layoutX="7.0" layoutY="-15.0" prefHeight="756.0" prefWidth="1056.0">
+         <children>
+            <VBox layoutX="779.0" layoutY="88.0" prefHeight="682.0" prefWidth="284.0" style="-fx-background-color: white;" />
+            <Label layoutX="854.0" layoutY="42.0" text="STACK" textFill="WHITE">
+               <font>
+                  <Font name="Helvetica" size="24.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Label>
+            <AnchorPane layoutX="6.0">
+               <children>
+                  <ListView fx:id="stackView" layoutX="772.0" layoutY="88.0" prefHeight="682.0" prefWidth="284.0" />
+                  <AnchorPane layoutY="70.0">
+                     <children>
+                        <TextField fx:id="displayField" alignment="BOTTOM_RIGHT" focusTraversable="false" layoutX="35.0" layoutY="14.0" onKeyPressed="#keyPressedTextField" prefHeight="85.0" prefWidth="500.0" promptText="Insert using the following buttons or the keyboard" style="-fx-background-radius: 20;">
+                           <font>
+                              <Font name="Helvetica" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="32.0" right="30.0" />
+                           </padding>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="348.0" layoutY="429.0" mnemonicParsing="false" onAction="#sumAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #231f20; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="+" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="446.0" layoutY="429.0" mnemonicParsing="false" onAction="#subAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #231f20; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="-" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="348.0" layoutY="511.0" mnemonicParsing="false" onAction="#productAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #231f20; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="x" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="348.0" layoutY="595.0" mnemonicParsing="false" onAction="#signReversalAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #231f20; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="( - )" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="446.0" layoutY="511.0" mnemonicParsing="false" onAction="#divisionAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #231f20; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="÷" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="446.0" layoutY="595.0" mnemonicParsing="false" onAction="#squareRootAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #231f20; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="√" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="541.0" layoutY="333.0" mnemonicParsing="false" onAction="#clearAction" prefHeight="48.0" prefWidth="81.0" style="-fx-background-color: #cc5400; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="Clear">
+                     <font>
+                        <Font name="Helvetica Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="644.0" layoutY="333.0" mnemonicParsing="false" onAction="#dropAction" prefHeight="48.0" prefWidth="81.0" style="-fx-background-color: #cc5400; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="Drop">
+                     <font>
+                        <Font name="Helvetica Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="541.0" layoutY="405.0" mnemonicParsing="false" onAction="#dupAction" prefHeight="48.0" prefWidth="81.0" style="-fx-background-color: #cc5400; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="Dup">
+                     <font>
+                        <Font name="Helvetica Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="644.0" layoutY="405.0" mnemonicParsing="false" onAction="#swapAction" prefHeight="48.0" prefWidth="81.0" style="-fx-background-color: #cc5400; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="Swap">
+                     <font>
+                        <Font name="Helvetica Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="589.0" layoutY="478.0" mnemonicParsing="false" onAction="#overAction" prefHeight="48.0" prefWidth="81.0" style="-fx-background-color: #cc5400; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="Over">
+                     <font>
+                        <Font name="Helvetica Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="355.0" layoutY="677.0" minHeight="36.0" minWidth="70.0" mnemonicParsing="false" onAction="#cancAction" prefHeight="55.0" prefWidth="143.0" style="-fx-background-radius: 20;" text="CANC">
+                     <font>
+                        <Font name="Helvetica" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="657.0" layoutY="677.0" mnemonicParsing="false" onAction="#assignToVarAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #white; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="&lt; X">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="554.0" layoutY="677.0" mnemonicParsing="false" onAction="#copyFromVarAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #white; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="&gt; X">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="657.0" layoutY="568.0" mnemonicParsing="false" onAction="#subToVarAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #white; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="- X">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="554.0" layoutY="568.0" mnemonicParsing="false" onAction="#sumToVarAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #white; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="+ X">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="30.0" layoutY="307.0" mnemonicParsing="false" onAction="#jAction" prefHeight="40.0" prefWidth="55.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" text="j">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="321.0" layoutY="307.0" mnemonicParsing="false" onAction="#logAction" prefHeight="40.0" prefWidth="55.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" text="log">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="461.0" layoutY="307.0" mnemonicParsing="false" onAction="#expAction" prefHeight="40.0" prefWidth="55.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" text="exp">
+                     <font>
+                        <Font name="Times New Roman Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="245.0" layoutY="307.0" mnemonicParsing="false" onAction="#tanAction" prefHeight="40.0" prefWidth="55.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" text="tan">
+                     <font>
+                        <Font name="Times New Roman Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="173.0" layoutY="307.0" mnemonicParsing="false" onAction="#cosAction" prefHeight="40.0" prefWidth="55.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" text="cos">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="391.0" layoutY="307.0" mnemonicParsing="false" onAction="#lnAction" prefHeight="40.0" prefWidth="55.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" text="ln">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="128.0" layoutY="677.0" mnemonicParsing="false" onAction="#pointAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="." textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="128.0" layoutY="595.0" mnemonicParsing="false" onAction="#twoAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="2" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="217.0" layoutY="595.0" mnemonicParsing="false" onAction="#threeAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="3" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="217.0" layoutY="511.0" mnemonicParsing="false" onAction="#sixAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="6" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="128.0" layoutY="511.0" mnemonicParsing="false" onAction="#fiveAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="5" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="38.0" layoutY="677.0" mnemonicParsing="false" onAction="#zeroAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="38.0" layoutY="595.0" mnemonicParsing="false" onAction="#oneAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="1" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="38.0" layoutY="511.0" mnemonicParsing="false" onAction="#fourAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="4" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="217.0" layoutY="429.0" mnemonicParsing="false" onAction="#nineAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="9" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="128.0" layoutY="429.0" mnemonicParsing="false" onAction="#eightAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="8" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="38.0" layoutY="429.0" mnemonicParsing="false" onAction="#sevenAction" prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: #ff9b00; -fx-border-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" text="7" textFill="WHITE">
+                     <font>
+                        <Font name="Helvetica Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="101.0" layoutY="307.0" mnemonicParsing="false" onAction="#sinAction" prefHeight="40.0" prefWidth="55.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" text="sin">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="85.0" layoutY="206.0" minHeight="36.0" minWidth="70.0" mnemonicParsing="false" onAction="#offAction" prefHeight="55.0" prefWidth="143.0" style="-fx-background-radius: 20;" text="OFF">
+                     <font>
+                        <Font name="Times New Roman" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="332.0" layoutY="206.0" minHeight="36.0" minWidth="70.0" mnemonicParsing="false" onAction="#onAction" prefHeight="55.0" prefWidth="143.0" style="-fx-background-radius: 20;" text="ON">
+                     <font>
+                        <Font name="Times New Roman" size="22.0" />
+                     </font>
+                  </Button>
+                  <Text fill="WHITE" layoutX="221.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SC_GROUP_07">
+                     <font>
+                        <Font name="Times New Roman" size="24.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="variablesList" layoutX="554.0" layoutY="246.0" prefHeight="55.0" prefWidth="169.0" promptText="        A-Z" style="-fx-font-size: 22; -fx-background-radius: 10;" />
+                  <Button fx:id="enterButton" layoutX="555.0" layoutY="88.0" minHeight="36.0" minWidth="63.0" mnemonicParsing="false" onAction="#enterAction" prefHeight="74.0" prefWidth="70.0" style="-fx-background-radius: 20;" text="ENTER" textFill="#e0e0e0">
+                     <font>
+                        <Font name="Times New Roman" size="22.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="deleteButton" layoutX="215.0" layoutY="677.0" minHeight="36.0" minWidth="55.0" mnemonicParsing="false" onAction="#delAction" prefHeight="55.0" prefWidth="61.0" style="-fx-background-radius: 20;" text="DELETE" textFill="#e0e0e0">
+                     <font>
+                        <Font name="Times New Roman" size="14.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="571.0" layoutY="106.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/scientificCalculator/sendicon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="38.0" layoutX="226.0" layoutY="686.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/scientificCalculator/deleteicon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
